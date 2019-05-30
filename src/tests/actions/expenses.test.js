@@ -1,24 +1,22 @@
 import { addExpense, removeExpense, editExpense } from '../../actions/expenses';
 
 test('should setup remove expense action object', () => {
-    const action = removeExpense({ id: '123abc' });
+    const id = '123abc';
+    const action = removeExpense({ id: id });
     expect(action).toEqual({
         type: 'REMOVE_EXPENSE',
-        id: '123abc'
+        id: id
     });
 });
 
 test('should setup edit expense action object', () => {
-    const action = editExpense('123abc', { description: 'Example', note:'Some note', amount: 1, createdAt: 0 });
+    const id = '123abc';
+    const updates = { description: 'Example', note:'Some note', amount: 1, createdAt: 0 };
+    const action = editExpense(id, updates);
     expect(action).toEqual({
         type: 'EDIT_EXPENSE',
-        id: '123abc',
-        updates: {
-            description: 'Example',
-            note:'Some note',
-            amount: 1,
-            createdAt: 0
-        }
+        id: id,
+        updates
     });
 });
 
